@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 2019_08_01_084350) do
   create_table "business_opening_hours", force: :cascade do |t|
     t.integer "day"
     t.time "opening_time"
-    t.time "close_time"
-    t.time "break_duration"
+    t.time "closing_time"
+    t.time "break_starting_time"
+    t.time "break_finishing_time"
     t.bigint "shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
