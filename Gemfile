@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'rubocop', '~> 0.39.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'simple_form'
 
 
 # Use CoffeeScript for .coffee assets and views
