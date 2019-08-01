@@ -1,5 +1,6 @@
 class BusinessOpeningHour < ApplicationRecord
     belongs_to :shop
+    accepts_nested_attributes_for :shop, :allow_destroy => true
 
     #Validations
     validates :day, presence: true, inclusion: { in: 1..7 }
@@ -13,7 +14,7 @@ class BusinessOpeningHour < ApplicationRecord
     validate :break_starting_time_before_break_finishing_time
 
     protected 
-    def opening_before_closing
+    def opening_time_before_closing_time
         errors.add(:closing_time, I18n.t('errors.opening_time_before_closing_time')) if opening_time && closing_time && opening_time >= closing_time
     end 
 
