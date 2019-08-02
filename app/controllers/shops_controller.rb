@@ -1,6 +1,11 @@
 class ShopsController < ApplicationController
     before_action :set_shops, only: [:edit, :update]
 
+
+    def index 
+        @shops = Shop.all 
+    end 
+
     def new
         @shop = Shop.new 
         @shop.business_opening_hours.build 
