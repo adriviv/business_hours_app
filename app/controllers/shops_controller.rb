@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
 
     def new
         @shop = Shop.new 
-        2.times {@shop.business_opening_hours.build }
+        @shop.business_opening_hours.build 
     end 
 
     def create
@@ -15,7 +15,10 @@ class ShopsController < ApplicationController
             render :new
         end
     end 
+    
  
+
+
     private
 
     def shop_params

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_08_01_084350) do
   enable_extension "plpgsql"
 
   create_table "business_opening_hours", force: :cascade do |t|
-    t.integer "day"
+    t.string "day"
     t.time "opening_time"
     t.time "closing_time"
     t.time "break_starting_time"
