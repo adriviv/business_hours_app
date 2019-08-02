@@ -1,0 +1,18 @@
+<%= form_for(@shop)  do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+  
+    <% %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each do |weekday| %>
+      <%= f.fields_for :business_opening_hours do |builder| %>
+          <%= render 'form_business_opening_hour', :f => builder ,:weekday => weekday%>
+      <% end %>
+    <% end %>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    
+  <% end %>
+  
