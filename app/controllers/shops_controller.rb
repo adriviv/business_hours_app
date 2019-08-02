@@ -41,5 +41,6 @@ class ShopsController < ApplicationController
     def shop_params
         params.require(:shop).permit(:name, business_opening_hours_attributes: [:day, :opening_time, :closing_time, :break_starting_time, :break_finishing_time])
     end
+
 end 
 

@@ -7,8 +7,17 @@
         <% @shops.each do |shop| %>
             <h5><strong><%= shop.name %></strong></h5>
             <% shop.business_opening_hours.each do |hour| %>
-                <p><%= "#{hour.day}: #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
+                <p><%= "#{hour.day} Fermé" %></p>
+                <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
+                    <p><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
+                    <p><%= "#{hour.day} Fermé" %></p>
+                <% else %> 
+                    <p><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                <% end %>
             <% end %>  
         <% end %>
     </table>
 </div>
+

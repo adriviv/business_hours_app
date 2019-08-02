@@ -3,10 +3,9 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
-
-  <% %w[Sunday Monday ].each do |weekday| %>
+  <% %w[Dimanche Lundi Mardi Mercredi Jeudi Vendredi Samedi].each do |weekday| %>
     <%= f.fields_for :business_opening_hours do |builder| %>
-        <%= render 'form_business_opening_hour', :f => builder ,:weekday => weekday%>
+        <%= render 'form_business_opening_hour', :f => builder , :weekday => weekday %>
     <% end %>
   <% end %>
 
