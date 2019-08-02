@@ -3,10 +3,30 @@
         <h1>Shops</h1>
             <%= link_to "Create a new store", new_shop_path, class: 'btn-submit-small' %>
     </div>
+
+
+
     <table class="margin-dotted-table">
         <% @shops.each do |shop| %>
             <h5><strong><%= shop.name %></strong></h5>
-            <% shop.business_opening_hours.each do |hour| %>
+
+
+
+            <% days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday) %>
+            <% days.rotate!(days.index(Time.zone.now.strftime("%A"))) %>
+            <% case_pieces = days.each_with_index.map do |day, i| %>
+                <% "WHEN '#{day}' THEN #{i}" %>
+                <% end %>
+
+
+            <% shop.business_opening_hours.order("CASE day #{case_pieces.join(' ')} END").each do |hour| %>
+
+                
+
+               
+
+       
+
                 <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                 <p><%= "#{hour.day} Fermé" %></p>
                 <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
@@ -16,7 +36,7 @@
                 <% else %> 
                     <p><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
                 <% end %>
-            <% end %>  
+            <% end %>
         <% end %>
     </table>
 </div>
