@@ -1,6 +1,5 @@
 class ShopsController < ApplicationController
-    before_action :set_shops, only: %i[show edit update destroy]
-
+    before_action :set_shops, only: %i[show edit update]
 
     def index 
          @shops = Shop.all
@@ -10,32 +9,29 @@ class ShopsController < ApplicationController
     end 
 
     def new
-        @shop = flash[:shop] ? Shop.new(flash[:shop]): Shop.new 
+        @shop = Shop.new 
         @shop.business_opening_hours.build
     end 
 
     def create
         @shop = Shop.new(shop_params)
         if @shop.save
-            redirect_to root_path
+            redirect_to @shop
         else
-            redirect_to new_shop_path, alert: @shop.errors.full_messages
+            render :new
         end
     end 
 
-    
+
     def edit
     end
 
     def update
         if @shop.update(shop_params)
-            redirect_to root_path
+            redirect_to @shop
         else 
-            redirect_to root_path
+            render :edit
         end  
-    end
-
-    def destroy
     end 
     
     private

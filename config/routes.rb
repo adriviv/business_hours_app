@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   
-  resources :shops
+  resources :shops, only: [:index, :show, :new, :create, :edit, :update]
 
 end
