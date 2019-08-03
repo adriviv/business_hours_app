@@ -23,6 +23,7 @@ class ShopsController < ApplicationController
         end
     end 
 
+    
     def edit
     end
 
