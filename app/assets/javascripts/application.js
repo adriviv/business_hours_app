@@ -27,8 +27,6 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-
-
  $(document).on("change", 'input[type="checkbox"]', function(){
     if($(this).is(":not(:checked)")) {
         $(this).parents('.frm-outer-container').find('#open_form').show();
@@ -42,6 +40,12 @@ $(document).on('turbolinks:load', function() {
 
         // $(this).is("#close").hide();
         // $(this).is("#open_form").show();
+    }
+  })
+
+  $(document).on("submit", function(){
+    if(('#open_form').find('.opening_time') === null || ('#open_form').find('.closing_time') === null) {
+        alert("Vous devez entrer une heure d'ouverture et de fermeture ou clickez sur 'fermé toute la journée' ")
     }
   })
 

@@ -18,20 +18,8 @@ class ShopsController < ApplicationController
         if @shop.save
             redirect_to @shop
         else
-            render :new
+            redirect_to new_shop_path
         end
-    end 
-
-
-    def edit
-    end
-
-    def update
-        if @shop.update(shop_params)
-            redirect_to @shop
-        else 
-            render :edit
-        end  
     end 
     
     private
