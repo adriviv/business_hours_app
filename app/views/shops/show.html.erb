@@ -1,9 +1,9 @@
 <div class="container">
     <div class="index-header">
-        <h1><%= "Shops #{@shop.id}" %></h1>
+        <h1><%= t('Shop')+ " n° #{@shop.id}" %></h1>
     </div>
     <table class="margin-dotted-table">
-        <h5><strong><%= "Name: #{@shop.name}" %></strong></h5>
+        <h5><strong><%= t('Name') + ": #{@shop.name}" %></strong></h5>
 
         <% days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday) %>
         <% days.rotate!(days.index(Time.zone.now.strftime("%A"))) %>
@@ -14,26 +14,27 @@
         <% @shop.business_opening_hours.order("CASE day #{case_pieces.join(' ')} END").each_with_index do |hour, index| %>
             <% if index == 0 %>
                 <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
-                <h3><strong><%= "#{hour.day} Fermé" %></h3>
+                <h3><strong><%= t("#{hour.day}") + " " + t('Close') %></h3>
                 <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                    <h3><strong><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h3>
+                    <h3><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h3>
                 <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
-                    <h3><strong><%= "#{hour.day} Fermé" %></h3>
+                    <h3><strong><%= t("#{hour.day}") + " " + t('Close') %></h3>
                 <% else %> 
-                    <h3><strong><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h3>
+                    <h3><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h3>
                 <% end %>
             <% else %>
                 <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
-                    <p><%= "#{hour.day} Fermé" %></p>
+                    <p><%= t("#{hour.day}") + " " + t('Close') %></p>
                 <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                    <p><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                    <p><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
                 <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
-                    <p><%= "#{hour.day} Fermé" %></p>
+                    <p><%= t("#{hour.day}") + " " + t('Close') %></p>
                 <% else %> 
-                    <p><%= "#{hour.day} #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                    <p><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
                 <% end %>
             <% end %>
         <% end %>
     </table>
-    <%= link_to "Mettre à jour les horaires", edit_shop_path(@shop), class: 'btn-submit-small' %>
     <%= link_to "Page d'acceuil", shops_path, class: 'btn-submit-small' %>
+
+    <% I18n.available_locales %>

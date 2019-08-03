@@ -5,7 +5,7 @@
 
     <div id='open_form'>
         <%= f.label :day, "Day" %>        
-        <%= f.text_field :day, :value => weekday  , readonly: true%>
+        <%= f.text_field :day, :value => t("#{weekday}") , readonly: true%>
         <br>
         
         <%= f.label :opening_time, "opening_time" %>        

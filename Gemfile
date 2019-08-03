@@ -21,6 +21,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'rspec-rails', '~> 3.8'
+gem 'rails-i18n'
 
 
 
