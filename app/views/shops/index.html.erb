@@ -1,7 +1,7 @@
 <div class="container">
     <div class="index-header">
-        <h1>Shops</h1>
-            <%= link_to "Create a new store", new_shop_path, class: 'btn-submit-small' %>
+        <h1>Liste des magasins</h1>
+            <%= link_to "Créer un nouveau magasin", new_shop_path, class: 'btn-submit-small' %>
     </div>
 
 
@@ -10,17 +10,13 @@
         <% @shops.each do |shop| %>
             <h5><strong><%= shop.name %></strong></h5>
 
-
-
             <% days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday) %>
             <% days.rotate!(days.index(Time.zone.now.strftime("%A"))) %>
             <% case_pieces = days.each_with_index.map do |day, i| %>
                 <% "WHEN '#{day}' THEN #{i}" %>
-                <% end %>
-
+            <% end %>
 
             <% shop.business_opening_hours.order("CASE day #{case_pieces.join(' ')} END").each_with_index do |hour, index| %>
-
                 <% if index == 0 %>
                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                     <h3><strong><%= "#{hour.day} Fermé" %></h3>
@@ -44,6 +40,7 @@
                     <% end %>
                 <% end %>
             <% end %>
+            <p><%= link_to "Plus de détails", shop_path(shop) %></p>
         <% end %>
     </table>
 </div>

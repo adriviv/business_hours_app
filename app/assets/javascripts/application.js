@@ -18,3 +18,32 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    // $(this).parents('.frm-outer-container').find('#open_form').show();
+    $('.frm-outer-container').find('#close').hide();
+    $('input[type=checkbox]').removeAttr('checked');
+
+});
+
+
+
+
+ $(document).on("change", 'input[type="checkbox"]', function(){
+    if($(this).is(":not(:checked)")) {
+        $(this).parents('.frm-outer-container').find('#open_form').show();
+        $(this).parents('.frm-outer-container').find('#close').hide()
+
+        // $(this).is("#open_form").hide();
+        // $(this).is("#close").show();
+    } else {
+        $(this).parents('.frm-outer-container').find('#close').show();
+        $(this).parents('.frm-outer-container').find('#open_form').hide();
+
+        // $(this).is("#close").hide();
+        // $(this).is("#open_form").show();
+    }
+  })
+
+
+

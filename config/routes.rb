@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   
-  resources :shops, only: %i[index new create edit update]
+  resources :shops
 
 end

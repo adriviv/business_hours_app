@@ -1,21 +1,34 @@
-<div>
-<%= f.label :day, "Day" %>        
-<%= f.text_field :day, :value => weekday , readonly: true%>
-<br>
 
-<%= f.label :opening_time, "opening_time" %>        
-<%= f.time_field :opening_time %>
-<br>
+<div class="frm-outer-container">
 
-<%= f.label :closing_time, "closing_time" %>        
-<%= f.time_field :closing_time %>
-<br>
+    <input type="checkbox" id="yourCheckbox" checked='' > Fermé toute la journée.
 
-<%= f.label :break_starting_time, "break_starting_time" %>        
-<%= f.time_field :break_starting_time %>
-<br>
+    <div id='open_form'>
+        <%= f.label :day, "Day" %>        
+        <%= f.text_field :day, :value => weekday , readonly: true%>
+        <br>
+        
+        <%= f.label :opening_time, "opening_time" %>        
+        <%= f.time_field :opening_time %>
+        <br>
+        
+        <%= f.label :closing_time, "closing_time" %>        
+        <%= f.time_field :closing_time %>
+        <br>
+        
+        <%= f.label :break_starting_time, "break_starting_time" %>        
+        <%= f.time_field :break_starting_time %>
+        <br>
+        
+        <%= f.label :break_finishing_time, "break_finishing_time" %>        
+        <%= f.time_field :break_finishing_time %>
+        <br>
+    </div>
 
-<%= f.label :break_finishing_time, "break_finishing_time" %>        
-<%= f.time_field :break_finishing_time %>
-<br>
+    <div id='close'>
+        <h5>Fermé toute la journée</h>
+    </div>
 </div>
+
+
+
