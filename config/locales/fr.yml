@@ -16,3 +16,7 @@ fr:
   Schedule: "Horraires"
   Home: "Liste des Magasins"
   Shops: "Magasins"
+  The opening time must be before closing time: "L'heure d'ouverture doit être avant l'heure de fermeture"
+  The starting time of the break must be before the finsishing time: "L'heure de début de la pause doit être antérieur à l'heure de la fin de pause"
+  The break cannot start before the opening time: "La pause ne peut pas commencer avant l'heure d'ouverture"
+  The end of the break cannot be after the closing time: "La fin de la pause ne peut pas être après l'heure de fermeture"
