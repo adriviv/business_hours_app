@@ -9,4 +9,6 @@ end
 
 describe Shop do
   it { is_expected.to validate_presence_of(:name) }
+  it { should have_many(:business_opening_hours) }
+
 end
