@@ -1,6 +1,5 @@
 class BusinessOpeningHour < ApplicationRecord
     belongs_to :shop
-
     accepts_nested_attributes_for :shop, :allow_destroy => true
 
     #Validations
@@ -11,7 +10,6 @@ class BusinessOpeningHour < ApplicationRecord
     validate :break_starting_time_before_break_finishing_time
     validate :break_finishing_time_before_closing_time
     validate :opening_time_before_break_starting_time
-
 
     protected 
 

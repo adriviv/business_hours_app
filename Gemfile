@@ -21,9 +21,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'rspec-rails', '~> 3.8'
 gem 'rails-i18n'
-gem 'bootstrap_form', '~> 2.3.0'
-
-
 
 
 # Use CoffeeScript for .coffee assets and views

@@ -1,0 +1,28 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://www.lecollectionist.com/assets/logo_collectionist-848770bbfb2480e7ebc3ee9e77395670e4d0ddd0860aac672be37370fa41eebe.svg" %>
+  <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to t('Home'), shops_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('Create a new shop'), new_shop_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <%= image_tag "https://media.licdn.com/dms/image/C5603AQE9lg2Ut8jTnQ/profile-displayphoto-shrink_200_200/0?e=1570665600&v=beta&t=Yjdpe8ujCyPCgjT2A55FxVWa5Hekkf7exwscQYnGxPE", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to t('Create a new shop'), new_shop_path, class: "dropdown-item" %>
+          <%= link_to "About", "#", class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

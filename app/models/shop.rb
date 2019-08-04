@@ -5,6 +5,4 @@ class Shop < ApplicationRecord
     # ## Validations
     validates :name, presence: true
 
-
-
 end
