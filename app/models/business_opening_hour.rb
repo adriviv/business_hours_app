@@ -20,7 +20,7 @@ class BusinessOpeningHour < ApplicationRecord
   end
 
   def break_starting_time_before_break_finishing_time
-    errors.add(:break_finishing_time, t('The starting time of the break must be before itsfinishing time')) if break_starting_time && break_finishing_time && break_starting_time >= break_finishing_time
+    errors.add(:break_finishing_time, t('The starting time of the break must be before the finsishing time')) if break_starting_time && break_finishing_time && break_starting_time >= break_finishing_time
   end
 
   def opening_time_before_break_starting_time
@@ -31,3 +31,4 @@ class BusinessOpeningHour < ApplicationRecord
     errors.add(:break_finishing_time, t('The end of the break cannot be after the closing time')) if break_finishing_time && closing_time && break_finishing_time >= closing_time
   end
 end
+

@@ -19,11 +19,11 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'bootstrap', '~> 4.3.1'
+gem 'i18n'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'rspec-rails', '~> 3.8'
 gem 'rubocop', '~> 0.39.0'
-
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

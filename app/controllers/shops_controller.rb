@@ -19,6 +19,7 @@ class ShopsController < ApplicationController
     if @shop.save
       redirect_to @shop
     else
+      flash[:alert] = t('An error occurred when you submitted the form, please check the validity of the information you entered.')
       redirect_to new_shop_path
     end
   end
