@@ -1,0 +1,54 @@
+.index-header {
+    padding-bottom: 20px; 
+}
+.page_title{
+    text-align: center;
+}
+
+.container_left{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.container_right {
+    text-align: right;
+    width: 70px; 
+}
+
+.shop_card {
+    border-top: 1px solid grey;
+    padding-top: 10px;
+}
+
+.shop_card p {
+    color: #626263;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.shop_name {
+    text-align: center;
+}
+
+.label {
+    padding: 0 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.text {
+    position: absolute;
+    left: 200px;
+}
+
+.day {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.frm-outer-container {
+    padding: 20px 10px;
+    border-bottom: 1px solid grey
+}

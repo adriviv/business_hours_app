@@ -43,12 +43,6 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-    $("form_new").submit(function(e){
-        e.preventDefault();
-        if(('#open_form').find('.opening_time') === null || ('#open_form').find('.closing_time') === null) {
-            alert("Vous devez entrer une heure d'ouverture et de fermeture ou clickez sur 'fermé toute la journée' ")
-    };
-});
 
 
 

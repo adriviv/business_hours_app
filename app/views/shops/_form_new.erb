@@ -1,33 +1,24 @@
-
 <div class="frm-outer-container">
-
+    <%= f.label :day, t("#{weekday}"), :class => "day" %>        
+    <%= f.hidden_field :day, :value => weekday%>
+    <br>
     <input type="checkbox" id="yourCheckbox" checked='' > Fermé toute la journée.
-
     <div id='open_form'>
-        <%= f.label :day, "Day" %>        
-        <%= f.text_field :day, :value => t("#{weekday}") , readonly: true%>
+        <%= f.label :opening_time, "opening_time", :class => "label" %>        
+        <%= f.time_field :opening_time, class: 'opening_time', :class => "text" %>
         <br>
-        
-        <%= f.label :opening_time, "opening_time" %>        
-        <%= f.time_field :opening_time, class: 'opening_time' %>
+        <%= f.label :closing_time, "closing_time", :class => "label"%>        
+        <%= f.time_field :closing_time,  class: 'closing_time', :class => "text" %>
+        <br>           
+        <%= f.label :break_starting_time, "break_starting_time", :class => "label"%>        
+        <%= f.time_field :break_starting_time,  class: 'break_starting_time', :class => "text" %>
         <br>
-        
-        <%= f.label :closing_time, "closing_time" %>        
-        <%= f.time_field :closing_time,  class: 'closing_time' %>
-        <br>
-        
-        <%= f.label :break_starting_time, "break_starting_time" %>        
-        <%= f.time_field :break_starting_time,  class: 'break_starting_time' %>
-        <br>
-        
-        <%= f.label :break_finishing_time, "break_finishing_time" %>   
-        <%= f.time_field :break_finishing_time,  class: 'break_finishing_time' %>
-     
+        <%= f.label :break_finishing_time, "break_finishing_time", :class => "label" %>   
+        <%= f.time_field :break_finishing_time,  class: 'break_finishing_time', :class => "text" %>
         <br>
     </div>
-
     <div id='close'>
-        <h5><%="Votre magasin est marqué comme fermé le #{weekday}"%></h5>
+        <h5><%="Votre magasin est marqué comme fermé le " + t("#{weekday}")%></h5>
     </div>
 </div>
 
