@@ -21,6 +21,23 @@ RSpec.describe ShopsController, type: :controller do
     end
   end
 
+  # show action
+  describe 'GET #show' do
+  before do
+    get :show, params: params
+  end
+
+  context 'when user id is valid' do
+    let(:shop) { FactoryGirl.create :shop }
+    let(:params) { { id: shop.id, shop: { name: 'test name' } } }
+
+    it 'is expected to set user instance variable' do
+      expect(assigns[:shop]).to eq(Shop.find_by(id: params[:id]))
+    end
+end
+end
+
+
   # new action
     describe 'GET #new' do
         before do
