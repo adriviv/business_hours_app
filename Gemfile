@@ -23,6 +23,7 @@ gem 'i18n'
 gem 'jquery-rails'
 gem 'rails-i18n'
 gem 'rubocop', '~> 0.39.0'
+gem 'rails-controller-testing'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

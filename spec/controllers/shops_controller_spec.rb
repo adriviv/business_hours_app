@@ -1,31 +1,85 @@
+require 'rails_helper'
 
+RSpec.describe ShopsController, type: :controller do
 
-describe "testing for has many business hours" do
-    before do
-      @shop = Shop.new(name: "Zara")
-      @business_opening_hours = BusinessOpeningHour.new(shop_id: @shop.id, day: "Sunday", opening_time: Time.now, closing_time: Time.now + 6.hours, break_starting_time: Time.now + 2.hours, break_finishing_time: Time.now + 3.hours)
-      @shop.business_opening_hours << @business_opening_hours
-
+    describe 'before actions' do
+        describe 'set_shops' do
+            it 'is expected to define before action' do
+                is_expected.to use_before_action(:set_shops)
+            end
+        end
     end
-  
-    it "in the post model" do
-      @shop.business_opening_hours.first.day.should == "Sunday"
+
+  # index action
+  describe 'GET #index' do
+    before do
+      get :index
+    end
+
+    it 'is expected to assign shop instance variable' do
+      expect(assigns[:shops]).to eq(Shop.all)
     end
   end
 
+  # new action
+    describe 'GET #new' do
+        before do
+            get :new
+        end
 
-# require 'rails_helper'
+        it 'is expected to assign user as new instance variable' do
+        expect(assigns[:shop]).to be_instance_of(Shop)
+        end
+
+        it 'renders new template' do
+        is_expected.to render_template(:new)
+        end
+
+        it 'renders application layout' do
+        is_expected.to render_template(:application)
+        end
+    end
+
+    # create action 
+    describe 'POST #create' do
+        before do
+            post :create, params: params
+        end
+
+        context 'when params are correct' do
+        let(:params) { { shop: { name: "Le Collectionist Shop" } } }
+
+            it 'is expected to create new shop successfully' do
+                expect(assigns[:shop]).to be_instance_of(Shop)
+            end
+
+            it 'is expected to have name assigned to it' do
+                expect(assigns[:shop].name).to eq('Le Collectionist Shop')
+            end
+
+            it 'is expected to redirect to shops path' do
+                response.should redirect_to(shop_path(assigns[:shop]))
+            end
+
+        end
+
+        context 'when params are not correct' do
+            let(:params) { { shop: { name: '' } } }
+
+            it 'is expected to render new template' do
+                is_expected.to redirect_to new_shop_path
+            end
+
+            it 'is expected to add errors to name attribute' do
+                expect(assigns[:shop].errors[:name]).to eq(['doit être rempli(e)'])
+            end
+        end
+    end
+    
+end
 
 
-# RSpec.describe ShopsController, type: :controller do
 
-#     describe "POST #create" do
-#       context "with valid attributes" do
-#         it "create new shop" do
-#             post :create, FactoryGirl.attributes_for(:shop)
-#             expect(Shop.count).to eq(1)
-#         end
-#       end
-#     end
-#   end
+
+
 
