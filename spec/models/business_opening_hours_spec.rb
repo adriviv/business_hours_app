@@ -8,8 +8,7 @@ RSpec.describe BusinessOpeningHour, type: :model do
   
   
   describe BusinessOpeningHour do
-    it { is_expected.to validate_presence_of(:day) }
-    it { is_expected.to validate_inclusion_of(:day).in_array(Date::DAYNAMES[1..7])}
+    it { is_expected.to validate_inclusion_of(:day).in_array(Date::DAYNAMES[0..6])}
     it { should belong_to(:shop) }
   end
 
