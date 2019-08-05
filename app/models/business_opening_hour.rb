@@ -5,6 +5,7 @@ class BusinessOpeningHour < ApplicationRecord
   accepts_nested_attributes_for :shop, allow_destroy: true
 
   # Validations
+  validates :day, presence: true, :inclusion => { :in => 1..7}
   # validates :day, presence: true, inclusion: { in: %w[Sunday Monday Tuesday Wednesday Thurday Friday Saturday] }
 
   # private validations
