@@ -7,7 +7,7 @@
         <%= f.text_field :name %>
       </p>
     <div>
-      <% %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday].each do |weekday| %>
+      <% @weekdays.each do |weekday| %>
         <%= f.fields_for :business_opening_hours do |builder| %>
             <%= render 'form_new', :f => builder , :weekday => weekday %>
         <% end %>

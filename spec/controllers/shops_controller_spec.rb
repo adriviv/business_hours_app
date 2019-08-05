@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ShopsController, type: :controller do
-
-    describe 'before actions' do
-        describe 'set_shops' do
-            it 'is expected to define before action' do
-                is_expected.to use_before_action(:set_shops)
-            end
-        end
+  describe 'before actions' do
+    describe 'set_shops' do
+      it 'is expected to define before action' do
+        is_expected.to use_before_action(:set_shops)
+      end
     end
+  end
 
   # index action
   describe 'GET #index' do
@@ -23,80 +24,71 @@ RSpec.describe ShopsController, type: :controller do
 
   # show action
   describe 'GET #show' do
-  before do
-    get :show, params: params
+    before do
+      get :show, params: params
+    end
+
+    context 'when user id is valid' do
+      let(:shop) { FactoryGirl.create :shop }
+      let(:params) { { id: shop.id, shop: { name: 'test name' } } }
+
+      it 'is expected to set user instance variable' do
+        expect(assigns[:shop]).to eq(Shop.find_by(id: params[:id]))
+      end
+    end
   end
 
-  context 'when user id is valid' do
-    let(:shop) { FactoryGirl.create :shop }
-    let(:params) { { id: shop.id, shop: { name: 'test name' } } }
-
-    it 'is expected to set user instance variable' do
-      expect(assigns[:shop]).to eq(Shop.find_by(id: params[:id]))
-    end
-end
-end
-
-
   # new action
-    describe 'GET #new' do
-        before do
-            get :new
-        end
+  describe 'GET #new' do
+    before do
+      get :new
+    end
 
-        it 'is expected to assign user as new instance variable' do
+    it 'is expected to assign user as new instance variable' do
+      expect(assigns[:shop]).to be_instance_of(Shop)
+    end
+
+    it 'renders new template' do
+      is_expected.to render_template(:new)
+    end
+
+    it 'renders application layout' do
+      is_expected.to render_template(:application)
+    end
+  end
+
+  # create action
+  describe 'POST #create' do
+    before do
+      post :create, params: params
+    end
+
+    context 'when params are correct' do
+      let(:params) { { shop: { name: 'Le Collectionist Shop' } } }
+
+      it 'is expected to create new shop successfully' do
         expect(assigns[:shop]).to be_instance_of(Shop)
-        end
+      end
 
-        it 'renders new template' do
-        is_expected.to render_template(:new)
-        end
+      it 'is expected to have name assigned to it' do
+        expect(assigns[:shop].name).to eq('Le Collectionist Shop')
+      end
 
-        it 'renders application layout' do
-        is_expected.to render_template(:application)
-        end
+      it 'is expected to redirect to shops path' do
+        response.should redirect_to(shop_path(assigns[:shop]))
+      end
     end
 
-    # create action 
-    describe 'POST #create' do
-        before do
-            post :create, params: params
-        end
+    context 'when params are not correct' do
+      let(:params) { { shop: { name: '' } } }
 
-        context 'when params are correct' do
-        let(:params) { { shop: { name: "Le Collectionist Shop" } } }
+      it 'is expected to render new template' do
+        is_expected.to redirect_to new_shop_path
+      end
 
-            it 'is expected to create new shop successfully' do
-                expect(assigns[:shop]).to be_instance_of(Shop)
-            end
-
-            it 'is expected to have name assigned to it' do
-                expect(assigns[:shop].name).to eq('Le Collectionist Shop')
-            end
-
-            it 'is expected to redirect to shops path' do
-                response.should redirect_to(shop_path(assigns[:shop]))
-            end
-
-        end
-
-        context 'when params are not correct' do
-            let(:params) { { shop: { name: '' } } }
-
-            it 'is expected to render new template' do
-                is_expected.to redirect_to new_shop_path
-            end
-
-            it 'is expected to add errors to name attribute' do
-                expect(assigns[:shop].errors[:name]).to eq(['doit être rempli(e)'])
-            end
-        end
+      it 'is expected to add errors to name attribute' do
+        expect(assigns[:shop].errors[:name]).to eq(['doit être rempli(e)'])
+      end
     end
-    
+  end
 end
-
-
-
-
-
-

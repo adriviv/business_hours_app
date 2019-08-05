@@ -21,9 +21,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'i18n'
 gem 'jquery-rails'
+gem 'rails-controller-testing'
 gem 'rails-i18n'
 gem 'rubocop', '~> 0.39.0'
-gem 'rails-controller-testing'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -48,9 +48,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 3.8'
   gem 'capybara', '~> 2.5'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -64,9 +64,9 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem 'database_cleaner', '~> 1.5'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.0', require: false
-  gem 'database_cleaner', '~> 1.5'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'faker', '~> 1.6.1'

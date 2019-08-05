@@ -12,6 +12,9 @@ class ShopsController < ApplicationController
   def new
     @shop = Shop.new
     @shop.business_opening_hours.build
+
+    # insert days into an instance variable to minimize ruby code in Front
+    @weekdays = Date::DAYNAMES[0..6]
   end
 
   def create
