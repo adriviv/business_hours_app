@@ -13,6 +13,7 @@ class ShopsController < ApplicationController
       Date.parse(lol).strftime('%w')  
     end
   
+    
     @case_pieces = weekdays_rotate_integer.each_with_index.map do |day, i| 
       "WHEN '#{day}' THEN #{i}" 
     end   
