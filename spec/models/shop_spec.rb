@@ -22,7 +22,7 @@ RSpec.describe Shop, type: :model do
       @shop.business_opening_hours << @business_opening_hours
     end
     it 'in the post model' do
-      @shop.business_opening_hours.first.day.should == Date::DAYNAMES[1]
+      @shop.business_opening_hours.first.day.should == 1
     end
   end
 end
