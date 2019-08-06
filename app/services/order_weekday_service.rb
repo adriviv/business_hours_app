@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class OrderWeekdayService
+
   def order_weekdays(shop)
     # order day according to Time.now & change format to intger
     weekdays = Date::DAYNAMES[0..6].rotate!(Date::DAYNAMES[0..6].index(Time.now.strftime('%A'))).map do |weekday|

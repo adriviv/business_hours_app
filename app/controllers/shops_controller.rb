@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_dependency 'app/services/order_weekday_service.rb'
-
 class ShopsController < ApplicationController
   before_action :set_shops, only: %i[show edit update]
 
   def index
     @shops = Shop.all
+    # function from app/services
     @ordered_weekdays = @shops.map { |shop| order_weekday_service.order_weekdays(shop.business_opening_hours) }
   end
 
   def show
+    # function from app/services
     @ordered_weekday = order_weekday_service.order_weekdays(@shop.business_opening_hours)
   end
 
@@ -46,8 +46,8 @@ class ShopsController < ApplicationController
                                  ])
   end
 
-  # Use Services to maintain skinny controller code
   def order_weekday_service
-    OrderWeekdayService.new
+    OrderWeekdayService.new   # Use Services to maintain skinny controller code
+
   end
 end

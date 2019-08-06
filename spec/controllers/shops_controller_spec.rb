@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+
 RSpec.describe ShopsController, type: :controller do
   describe 'before actions' do
     describe 'set_shops' do
@@ -20,6 +21,12 @@ RSpec.describe ShopsController, type: :controller do
     it 'is expected to assign shop instance variable' do
       expect(assigns[:shops]).to eq(Shop.all)
     end
+
+
+    context 'when user id is valid' do
+      let(:shop) { FactoryGirl.create :shop }
+      let(:params) { { id: shop.id, shop: { name: 'test name' } } }
+    end 
   end
 
   # show action
