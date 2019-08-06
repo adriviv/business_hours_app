@@ -14,12 +14,12 @@ class ShopsController < ApplicationController
     end
   
     
-    @case_pieces = weekdays_rotate_integer.each_with_index.map do |day, i| 
+    case_weekdays_ordered = weekdays_rotate_integer.each_with_index.map do |day, i| 
       "WHEN '#{day}' THEN #{i}" 
     end   
 
-    @foo = @shops.map do |shop|
-      lol = shop.business_opening_hours.order("CASE day #{@case_pieces.join(' ')} END")        
+    @ordered_weekdays = @shops.map do |shop|
+      shop.business_opening_hours.order("CASE day #{case_weekdays_ordered.join(' ')} END")  
     end
     
     # .order("CASE day #{@case_pieces.join(' ')} END")

@@ -21,8 +21,8 @@
                                 </div>
                             </div>
                                 <div class='container_right'>
-                                     <% @foo.each do |foo| %>
-                                        <% foo.each_with_index do |hour, index| %>
+                                     <%  @ordered_weekdays.each do |ordered_weekday| %>
+                                        <% ordered_weekday.each_with_index do |hour, index| %>
                                             <% if index == 0 %>
                                                 <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                                     <h6 class='current-day'><strong><%= t("#{hour.day}") + " " + t('Close')%></h6>
