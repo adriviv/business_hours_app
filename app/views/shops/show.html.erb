@@ -16,7 +16,8 @@
                             <% case_pieces = days.each_with_index.map do |day, i| %>
                                 <% "WHEN '#{day}' THEN #{i}" %>
                             <% end %>
-                            <% @shop.business_opening_hours.order("CASE day #{case_pieces.join(' ')} END").each_with_index do |hour, index| %>
+                            
+                            <% @ordered_weekday.each_with_index do |hour, index| %>
                                 <% if index == 0 %>
                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                     <h5><strong><%= t("#{hour.day}") + " " + t('Close') %></h5>
