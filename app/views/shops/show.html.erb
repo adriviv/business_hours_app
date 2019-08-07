@@ -11,11 +11,7 @@
 
                         </div>
                             <div class="container_right">
-                            <% days = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday) %>
-                            <% days.rotate!(days.index(Time.now.strftime("%A"))) %>
-                            <% case_pieces = days.each_with_index.map do |day, i| %>
-                                <% "WHEN '#{day}' THEN #{i}" %>
-                            <% end %>
+ 
                             
                             <% @ordered_weekday.each_with_index do |hour, index| %>
                                 <% if index == 0 %>

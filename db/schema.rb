@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,27 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_805_164_953) do
+ActiveRecord::Schema.define(version: 2019_08_05_164953) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'business_opening_hours', force: :cascade do |t|
-    t.integer 'day'
-    t.time 'opening_time'
-    t.time 'closing_time'
-    t.time 'break_starting_time'
-    t.time 'break_finishing_time'
-    t.bigint 'shop_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['shop_id'], name: 'index_business_opening_hours_on_shop_id'
+  create_table "business_opening_hours", force: :cascade do |t|
+    t.integer "day"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.time "break_starting_time"
+    t.time "break_finishing_time"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_business_opening_hours_on_shop_id"
   end
 
-  create_table 'shops', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key 'business_opening_hours', 'shops'
+  add_foreign_key "business_opening_hours", "shops"
 end
