@@ -8,11 +8,8 @@
                     <div  class="containers">
                         <div>
                             <img class="img-fluid" src="https://source.unsplash.com/collection/190727/600x300">
-
                         </div>
-                            <div class="container_right">
- 
-                            
+                        <div class="container_right">                           
                             <% @ordered_weekday.each_with_index do |hour, index| %>
                                 <% if index == 0 %>
                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
