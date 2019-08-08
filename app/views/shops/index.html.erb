@@ -23,8 +23,6 @@
                                                         <h6 class='current-day'><strong><%= t("#{hour.day}") + " " + t('Close')%></h6>
                                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
                                                         <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></h6>
-                                                    <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
-                                                        <h6 class='current-day'><strong><%= t("#{hour.day}") + " " + t('Close') %></h6>
                                                     <% else %> 
                                                         <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></h6>
                                                     <% end %>
@@ -33,8 +31,6 @@
                                                         <p class='other-days'><%= t("#{hour.day}") + " " + t('Close') %></p>
                                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
                                                         <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></p>
-                                                    <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
-                                                        <p class='other-days'><%= t("#{hour.day}") + " " + t('Close') %></p>
                                                     <% else %> 
                                                         <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></p>
                                                     <% end %>

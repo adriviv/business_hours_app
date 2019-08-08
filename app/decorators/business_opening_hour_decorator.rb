@@ -20,7 +20,28 @@ class BusinessOpeningHourDecorator < Draper::Decorator
         end
     end 
 
-    # def opening_hour
-    #      object.opening_hour.strftime("%H:%M")
-    # end 
+
+    def opening_time
+        if object.opening_time != nil 
+            object.opening_time.strftime("%H:%M")
+        end
+    end
+
+    def closing_time
+        if object.closing_time != nil
+            object.closing_time.strftime("%H:%M")
+        end
+    end 
+
+    def break_starting_time
+        if object.break_starting_time != nil 
+            object.break_starting_time.strftime("%H:%M")
+        end
+    end
+
+    def break_finishing_time
+        if object.break_finishing_time != nil
+            object.break_finishing_time.strftime("%H:%M")
+        end
+    end    
   end
