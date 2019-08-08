@@ -22,7 +22,6 @@ RSpec.describe ShopsController, type: :controller do
       expect(assigns[:shops]).to eq(Shop.all)
     end
 
-
     context 'when user id is valid' do
       let(:shop) { FactoryGirl.create :shop }
       let(:params) { { id: shop.id, shop: { name: 'test name' } } }

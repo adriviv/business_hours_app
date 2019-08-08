@@ -3,8 +3,6 @@
 class ShopsController < ApplicationController
   before_action :set_shops, only: %i[show edit update]
 
-
-
   def index
     @shops = Shop.all.decorate
     @ordered_weekdays = @shops.map { |shop| order_weekday_service.order_weekdays(shop.business_opening_hours) }
@@ -35,8 +33,6 @@ class ShopsController < ApplicationController
 
   def set_shops
     @shop = ShopDecorator.find(params[:id]).decorate
-
-    # @shop = Shop.find(params[:id]).decorate
   end
 
   def shop_params
@@ -51,6 +47,5 @@ class ShopsController < ApplicationController
 
   def order_weekday_service
     OrderWeekdayService.new   # Use Services to maintain skinny controller code
-
   end
 end

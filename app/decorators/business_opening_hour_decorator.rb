@@ -44,4 +44,4 @@ class BusinessOpeningHourDecorator < Draper::Decorator
             object.break_finishing_time.strftime("%H:%M")
         end
     end    
-  end
+end
