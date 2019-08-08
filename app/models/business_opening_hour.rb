@@ -13,12 +13,6 @@ class BusinessOpeningHour < ApplicationRecord
   validate :break_finishing_time_before_closing_time
   validate :opening_time_before_break_starting_time
 
-  # def day
-  #   # Date::DAYNAMES[read_attribute(:day)%7]
-  #   # # Date::DAYNAMES[:day]
-  #   DateTime.strptime(timestamp,'%w')
-  # end
-
   protected
 
   def opening_time_before_closing_time
