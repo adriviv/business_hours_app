@@ -17,31 +17,29 @@
                                     <p class="description"><%=t('Schedule') + ":"%></p>   
                                 </div>   
                                     <div class='container_right'>
-                                        <%  @ordered_weekdays.each do |ordered_weekday| %>
-                                            <% ordered_weekday.each_with_index do |hour, index| %>
+                                            <% shop.business_opening_hours.each_with_index do |hour, index| %>
                                                 <% if index == 0 %>
                                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                                         <h6 class='current-day'><strong><%= t("#{hour.day}") + " " + t('Close')%></h6>
                                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                                                        <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h6>
+                                                        <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></h6>
                                                     <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
                                                         <h6 class='current-day'><strong><%= t("#{hour.day}") + " " + t('Close') %></h6>
                                                     <% else %> 
-                                                        <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h6>
+                                                        <h6 class='current-day'><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></h6>
                                                     <% end %>
                                                 <% else %>
                                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                                         <p class='other-days'><%= t("#{hour.day}") + " " + t('Close') %></p>
                                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                                                        <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                                                        <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></p>
                                                     <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
                                                         <p class='other-days'><%= t("#{hour.day}") + " " + t('Close') %></p>
                                                     <% else %> 
-                                                        <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                                                        <p class='other-days'><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></p>
                                                     <% end %>
                                                 <% end %>
                                             <% end %>
-                                        <% end %>
                                     </div>
                                 </div>
                                 <p><%= link_to t('More details'), shop_path(shop) %></p>

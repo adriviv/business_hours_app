@@ -15,21 +15,21 @@
                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                     <h5><strong><%= t("#{hour.day}") + " " + t('Close') %></h5>
                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                                        <h5><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h5>
+                                        <h5><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></h5>
                                     <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
                                         <h5><strong><%= t("#{hour.day}") + " " + t('Close') %></h5>
                                     <% else %> 
-                                        <h5><strong><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></h5>
+                                        <h5><strong><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></h5>
                                     <% end %>
                                 <% else %>
                                     <% if hour.opening_time.blank? || hour.closing_time.blank?  %>
                                         <p><%= t("#{hour.day}") + " " + t('Close') %></p>
                                     <% elsif (hour.opening_time.present? && hour.closing_time.present?) && (hour.break_starting_time.blank? || hour.break_finishing_time.blank?)  %>
-                                        <p><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                                        <p><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.closing_time}" %></p>
                                     <% elsif hour.opening_time.blank? || hour.closing_time.blank?  %>
                                         <p><%= t("#{hour.day}") + " " + t('Close') %></p>
                                     <% else %> 
-                                        <p><%= t("#{hour.day}") + " #{hour.opening_time.strftime('%H:%M')}-#{hour.break_starting_time.strftime('%H:%M')}, #{hour.break_finishing_time.strftime('%H:%M')}-#{hour.closing_time.strftime('%H:%M')}" %></p>
+                                        <p><%= t("#{hour.day}") + " #{hour.opening_time}-#{hour.break_starting_time}, #{hour.break_finishing_time}-#{hour.closing_time}" %></p>
                                     <% end %>
                                 <% end %>
                             <% end %>
